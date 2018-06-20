@@ -16,6 +16,9 @@
 
 package com.android.camera.async;
 
+import android.support.annotation.Nullable;
+
+import com.google.common.util.concurrent.AsyncFunction;
 import com.google.common.util.concurrent.ForwardingListenableFuture;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -93,7 +96,7 @@ public class Futures2 {
         // allAsList will propagate the failures instead of null values to the
         // parameters of the supplied function.
         ListenableFuture<List<Object>> result = Futures.<Object>allAsList(futures);
-       /* return Futures.transform(result, new AsyncFunction<List<Object>, TResult>() {
+        return Futures.transformAsync(result, new AsyncFunction<List<Object>, TResult>() {
             @Override
             public ListenableFuture<TResult> apply(@Nullable List<Object> list) throws Exception {
                 T1 value1 = (T1) list.get(0);
@@ -101,9 +104,8 @@ public class Futures2 {
 
                 return fn.apply(value1, value2);
             }
-        });*/
+        });
 
-       return null;
     }
 
     /**
@@ -140,7 +142,7 @@ public class Futures2 {
         // allAsList will propagate the failures instead of null values to the
         // parameters of the supplied function.
         ListenableFuture<List<Object>> result = Futures.<Object>allAsList(futures);
-      /*  return Futures.transform(result, new AsyncFunction<List<Object>, TResult>() {
+        return Futures.transformAsync(result, new AsyncFunction<List<Object>, TResult>() {
             @Override
             public ListenableFuture<TResult> apply(@Nullable List<Object> list) throws Exception {
                 T1 value1 = (T1) list.get(0);
@@ -149,9 +151,7 @@ public class Futures2 {
 
                 return fn.apply(value1, value2, value3);
             }
-        });*/
-
-      return null;
+        });
     }
 
     /**

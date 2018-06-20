@@ -2347,7 +2347,7 @@ public class CameraActivity extends QuickActivity
 
             @Override
             protected void onPostExecute(Long bytes) {
-                updateStorageHint(bytes);
+                //updateStorageHint(bytes);
                 // This callback returns after I/O to check disk, so we could be
                 // pausing and shutting down. If so, don't bother invoking.
                 if (callback != null && !mPaused) {

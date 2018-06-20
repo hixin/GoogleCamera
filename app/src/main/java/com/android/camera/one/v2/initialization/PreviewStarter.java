@@ -21,6 +21,8 @@ import android.view.Surface;
 import com.android.camera.one.OneCamera;
 import com.android.camera.one.v2.camera2proxy.CameraCaptureSessionProxy;
 import com.android.camera.util.ApiHelper;
+import com.google.common.util.concurrent.AsyncFunction;
+import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
@@ -80,7 +82,7 @@ class PreviewStarter {
         final ListenableFuture<CameraCaptureSessionProxy> sessionFuture =
                 mCaptureSessionCreator.createCaptureSession(surfaceList);
 
-        /*return Futures.transform(sessionFuture,
+        return Futures.transformAsync(sessionFuture,
                 new AsyncFunction<CameraCaptureSessionProxy, Void>() {
                     @Override
                     public ListenableFuture<Void> apply(
@@ -88,7 +90,8 @@ class PreviewStarter {
                         mSessionListener.onCameraCaptureSessionCreated(captureSession, surface);
                         return Futures.immediateFuture(null);
                     }
-                });*/
-        return null;
+
+
+            });
     }
 }
